@@ -23,7 +23,7 @@ on:
 
 jobs:
   check:
-    runs-on: [self-hosted, project-updater]
+    runs-on: windows-latest
     outputs:
      shouldRun: ${{ steps.setShouldRun.outputs.shouldRun }}
      gameVersion: ${{ steps.setGameVersion.outputs.gameVersion }}
@@ -95,7 +95,7 @@ jobs:
         run: Remove-Item * -Recurse -Force -Confirm:$false -ErrorAction Ignore
   
   updateSML:
-    runs-on: [self-hosted, project-updater]
+    runs-on: windows-latest
     needs: check
     if: needs.check.outputs.shouldRun == 'true'
     steps:
